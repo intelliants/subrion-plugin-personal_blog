@@ -300,7 +300,7 @@ if (iaView::REQUEST_XML == $iaView->getRequestType())
 		$output['item'][] = array(
 			'title' => $entry['title'],
 			'link' => $baseUrl . $entry['id'] . '-' . $entry['alias'],
-			'pubDate' => date('D, d M Y H:i:s T', strtotime($entry['date_modified'])),
+			'pubDate' => date('D, d M Y H:i:s T', strtotime($entry['date_added'])),
 			'description' => iaSanitize::tags($entry['body'])
 		);
 	}
