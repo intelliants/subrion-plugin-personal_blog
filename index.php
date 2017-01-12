@@ -298,7 +298,7 @@ if (iaView::REQUEST_XML == $iaView->getRequestType())
 	foreach ($entries as $entry)
 	{
 		$output['item'][] = array(
-			'title' => $entry['title'],
+      'title' => $entry['title'],
 			'guid' => $baseUrl . $entry['id'] . '-' . $entry['alias'],
 			'pubDate' => date('D, d M Y H:i:s O', strtotime($entry['date_added'])),
 			'description' => iaSanitize::tags($entry['body'])
