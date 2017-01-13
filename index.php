@@ -284,8 +284,7 @@ if (iaView::REQUEST_HTML == $iaView->getRequestType())
 	}
 }
 
-if (iaView::REQUEST_XML == $iaView->getRequestType())
-{
+if (iaView::REQUEST_XML == $iaView->getRequestType()) {
 	$output = array(
 		'title' => $iaCore->get('site') . ' :: ' . $iaView->title(),
 		'description' => '',
@@ -293,19 +292,34 @@ if (iaView::REQUEST_XML == $iaView->getRequestType())
 		'item' => array()
 	);
 
+	//Add default Feed Image displayed in RSS Readers
+	//You can add your own by replacing rss.png in "/plugins/personal_blog/templates/front/img" folder
+	$output['image'][] = array(
+		'title' => $iaCore->get('site') . ' :: ' . $iaView->title(),
+		'url' => IA_URL . 'plugins/personal_blog/templates/front/img/rss.png',
+		'link' => $baseUrl
+	);
+	
 	$entries = $iaBlog->get(0, 20);
 
-	foreach ($entries as $entry)
-	{
+	foreach ($entries as $entry) {
+
+		$desc = '';
+		if($entry['image']!='') {
+			//Let's add the blog image as well, if used
+			$desc.= '<p><img src="' . IA_URL . 'uploads/' . $entry["image"] . '"/></p>';
+		}
+		$desc.= iaSanitize::tags($entry['body']);
+
 		$output['item'][] = array(
-      'title' => $entry['title'],
+			'title' => $entry['title'],
 			'guid' => $baseUrl . $entry['id'] . '-' . $entry['alias'],
 			'pubDate' => date('D, d M Y H:i:s O', strtotime($entry['date_added'])),
-			'description' => iaSanitize::tags($entry['body'])
+			'description' => $desc
 		);
+
 	}
 
 	$iaView->assign('channel', $output);
 }
-
 $iaDb->resetTable();
