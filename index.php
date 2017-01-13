@@ -289,7 +289,7 @@ if (iaView::REQUEST_XML == $iaView->getRequestType())
 	$output = array(
 		'title' => $iaCore->get('site') . ' :: ' . $iaView->title(),
 		'description' => '',
-		'url' => IA_URL . 'blog',
+		'link' => IA_URL . 'blog',
 		'item' => array()
 	);
 
@@ -298,9 +298,9 @@ if (iaView::REQUEST_XML == $iaView->getRequestType())
 	foreach ($entries as $entry)
 	{
 		$output['item'][] = array(
-			'title' => $entry['title'],
-			'link' => $baseUrl . $entry['id'] . '-' . $entry['alias'],
-			'pubDate' => date('D, d M Y H:i:s T', strtotime($entry['date_added'])),
+      'title' => $entry['title'],
+			'guid' => $baseUrl . $entry['id'] . '-' . $entry['alias'],
+			'pubDate' => date('D, d M Y H:i:s O', strtotime($entry['date_added'])),
 			'description' => iaSanitize::tags($entry['body'])
 		);
 	}
