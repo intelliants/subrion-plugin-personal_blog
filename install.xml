@@ -9,7 +9,7 @@
 	<compatibility>4.0</compatibility>
 
 	<actions>
-		<action name="blogs" url="blog/" icon="list" pages="personal_blog:add,personal_blog:edit">List</action>
+		<action name="blogs" url="blog/" icon="list" pages="personal_blog:add,personal_blog:edit">list_blogs</action>
 		<action name="blog_add" url="blog/add/" icon="plus" pages="personal_blog:read,personal_blog:edit">add_blog_entry</action>
 		<action type="dashboard" name="dashboard_blogpost_add" url="blog/add/" icon="quill">add_blog_entry</action>
 	</actions>
@@ -33,6 +33,7 @@
 
 	<phrases>
 		<phrase category="admin" key="blogposts">Blogposts</phrase>
+		<phrase category="admin" key="list_blogs">List</phrase>
 
 		<phrase category="common" key="add_blog_entry">Add Blog Entry</phrase>
 		<phrase category="common" key="blog">Blog</phrase>
