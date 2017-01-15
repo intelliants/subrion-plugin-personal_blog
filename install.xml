@@ -10,8 +10,8 @@
 
 	<actions>
 		<action name="blogs" url="blog/" icon="list" pages="personal_blog:add,personal_blog:edit">List</action>
-		<action name="blog_add" url="blog/add/" icon="plus" pages="personal_blog:read,personal_blog:edit">Add Blog Entry</action>
-		<action type="dashboard" name="dashboard_blogpost_add" url="blog/add/" icon="quill">New Blog Post</action>
+		<action name="blog_add" url="blog/add/" icon="plus" pages="personal_blog:read,personal_blog:edit">add_blog_entry</action>
+		<action type="dashboard" name="dashboard_blogpost_add" url="blog/add/" icon="quill">add_blog_entry</action>
 	</actions>
 
 	<adminpages>
